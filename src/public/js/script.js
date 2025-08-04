@@ -30,35 +30,81 @@ function prevStep() {
 
 function addDosenPengampu() {
     const container = document.getElementById('dosen-pengampu-container');
-    const newDiv = document.createElement('div');
-    newDiv.className = 'flex items-center mb-2';
-    newDiv.innerHTML = `
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="dosen_pengampu[]" type="text" required>
-        <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeElement(this)">-</button>
-    `;
-    container.appendChild(newDiv);
+    // Ambil input terakhir (yang ada tombol +)
+    const inputs = container.querySelectorAll('input[name="dosen_pengampu[]"]');
+
+    // Tambahkan event sebelum submit form untuk mengisi cpl_deskripsi[]
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Hapus input cpl_deskripsi[] lama
+            document.querySelectorAll('input[name="cpl_deskripsi[]"]').forEach(el => el.remove());
+            // Ambil semua CPL yang dicek
+            cplCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const desc = checkbox.getAttribute('data-description');
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'cpl_deskripsi[]';
+                    input.value = desc;
+                    form.appendChild(input);
+                }
+            });
+        });
+    }
+    const lastInput = inputs[inputs.length - 1];
+    const value = lastInput.value;
+    if (value.trim() !== "") {
+        // Buat input baru di bawah, isi dengan value lama
+        const newDiv = document.createElement('div');
+        newDiv.className = 'flex items-center mb-2';
+        newDiv.innerHTML = `
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="dosen_pengampu[]" type="text" value="${value}" required>
+            <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeElement(this)">-</button>
+        `;
+        container.appendChild(newDiv);
+        lastInput.value = "";
+    } else {
+        lastInput.focus();
+    }
 }
 
 function addPustakaUtama() {
     const container = document.getElementById('pustaka-utama-list');
-    const newDiv = document.createElement('div');
-    newDiv.className = 'flex items-center mb-2';
-    newDiv.innerHTML = `
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="pustaka_utama[]" type="text" required>
-        <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeElement(this)">-</button>
-    `;
-    container.appendChild(newDiv);
+    const inputs = container.querySelectorAll('input[name="pustaka_utama[]"]');
+    const lastInput = inputs[inputs.length - 1];
+    const value = lastInput.value;
+    if (value.trim() !== "") {
+        const newDiv = document.createElement('div');
+        newDiv.className = 'flex items-center mb-2';
+        newDiv.innerHTML = `
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="pustaka_utama[]" type="text" value="${value}" required>
+            <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeElement(this)">-</button>
+        `;
+        container.appendChild(newDiv);
+        lastInput.value = "";
+    } else {
+        lastInput.focus();
+    }
 }
 
 function addPustakaPendukung() {
     const container = document.getElementById('pustaka-pendukung-list');
-    const newDiv = document.createElement('div');
-    newDiv.className = 'flex items-center mb-2';
-    newDiv.innerHTML = `
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="pustaka_pendukung[]" type="text" required>
-        <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeElement(this)">-</button>
-    `;
-    container.appendChild(newDiv);
+    const inputs = container.querySelectorAll('input[name="pustaka_pendukung[]"]');
+    const lastInput = inputs[inputs.length - 1];
+    const value = lastInput.value;
+    if (value.trim() !== "") {
+        const newDiv = document.createElement('div');
+        newDiv.className = 'flex items-center mb-2';
+        newDiv.innerHTML = `
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="pustaka_pendukung[]" type="text" value="${value}" required>
+            <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeElement(this)">-</button>
+        `;
+        container.appendChild(newDiv);
+        lastInput.value = "";
+    } else {
+        lastInput.focus();
+    }
 }
 
 function removeElement(button) {
@@ -104,9 +150,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function addCPMK(cplValue, cplDescription) {
-    cpmkCounter++;
-    const cpmkId = `CPMK${String(cpmkCounter).padStart(2, '0')}`;
     const cpmkList = document.getElementById(`cpmk-list-${cplValue}`);
+    // Cari nomor urut terbesar dari id CPMK yang sudah ada
+    const allCpmk = document.querySelectorAll('div[id^="CPMK"]');
+    let maxNum = 0;
+    allCpmk.forEach(div => {
+        const match = div.id.match(/^CPMK(\d{2})$/);
+        if (match) {
+            const num = parseInt(match[1], 10);
+            if (num > maxNum) maxNum = num;
+        }
+    });
+    const nextNum = maxNum + 1;
+    const cpmkId = `CPMK${String(nextNum).padStart(2, '0')}`;
 
     const newCpmkDiv = document.createElement('div');
     newCpmkDiv.id = cpmkId;

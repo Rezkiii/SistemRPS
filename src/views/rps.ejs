@@ -42,7 +42,11 @@
                 </div>
                 <div>
                     <label class="label" for="tahun_akademik">Tahun Akademik</label>
-                    <input class="input" id="tahun_akademik" name="tahun_akademik" type="number" required>
+                    <input class="input" id="tahun_akademik" name="tahun_akademik" type="text" required placeholder="Contoh: 2025/2026">
+                </div>
+                <div>
+                    <label class="label" for="mk_syarat">Mata Kuliah Syarat</label>
+                    <input class="input" id="mk_syarat" name="mk_syarat" type="text" placeholder="Boleh dikosongkan">
                 </div>
                 <div class="md:col-span-2">
                     <div class="flex flex-col md:flex-row gap-4">
@@ -55,54 +59,6 @@
                             <input class="input" id="sks_praktikum" name="sks_praktikum" type="number" min="0" required>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <label class="label" for="bentuk_pelajaran">Bentuk Pelajaran</label>
-                    <select class="input" id="bentuk_pelajaran" name="bentuk_pelajaran" required>
-                        <option value="Kuliah">Kuliah</option>
-                        <option value="Responsi">Responsi</option>
-                        <option value="Tutorial">Tutorial</option>
-                        <option value="Seminar">Seminar</option>
-                        <option value="Praktikum">Praktikum</option>
-                        <option value="Praktik Studio">Praktik Studio</option>
-                        <option value="Penelitian">Penelitian</option>
-                        <option value="Perancangan">Perancangan</option>
-                        <option value="Pengembangan">Pengembangan</option>
-                        <option value="Tugas Akhir">Tugas Akhir</option>
-                        <option value="Pelatihan">Pelatihan</option>
-                        <option value="Bela negara">Bela negara</option>
-                        <option value="Magang">Magang</option>
-                        <option value="Pengabdian Kepada Masyarakat">Pengabdian Kepada Masyarakat</option>
-                        <option value="Wirausaha">Wirausaha</option>
-                        <option value="Pertukaran Pelajar">Pertukaran Pelajar</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="label" for="metode_pembelajaran">Metode Pembelajaran</label>
-                    <select class="input" id="metode_pembelajaran" name="metode_pembelajaran" required>
-                        <option value="Small Group Discussion">Small Group Discussion</option>
-                        <option value="Role-Play & Simulation">Role-Play & Simulation</option>
-                        <option value="Discovery Learning">Discovery Learning</option>
-                        <option value="Self-Directed Learning">Self-Directed Learning</option>
-                        <option value="Cooperative Learning">Cooperative Learning</option>
-                        <option value="Collaborative Learning">Collaborative Learning</option>
-                        <option value="Contextual Learning">Contextual Learning</option>
-                        <option value="Project Based Learning">Project Based Learning</option>
-                        <option value="Problem Based Learning & Inquiry">Problem Based Learning & Inquiry</option>
-                        <option value="Case Study">Case Study</option>
-                    </select>
-                </div>
-                <div class="md:col-span-2">
-                    <label class="label" for="strategi_pembelajaran">Strategi Pembelajaran</label>
-                    <textarea class="input" id="strategi_pembelajaran" name="strategi_pembelajaran" rows="3" required></textarea>
-                </div>
-                <div>
-                    <label class="label" for="modalitas_luring">Modalitas Luring</label>
-                    <input class="input" id="modalitas_luring" name="modalitas_luring" type="text" required>
-                </div>
-                <div>
-                    <label class="label" for="modalitas_daring">Modalitas Daring</label>
-                    <input class="input" id="modalitas_daring" name="modalitas_daring" type="text" required>
                 </div>
                 <div>
                     <label class="label" for="tanggal_penyusunan">Tanggal Penyusunan</label>

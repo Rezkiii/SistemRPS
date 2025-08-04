@@ -126,6 +126,13 @@ router.post('/save-rps', isAuthenticated, (req, res) => {
       rpsData[field] = rpsData[`${field}[]`];
     }
   });
+  // Simpan cpl_deskripsi jika ada
+  if (rpsData['cpl_deskripsi[]']) {
+    if (!Array.isArray(rpsData['cpl_deskripsi[]'])) {
+      rpsData['cpl_deskripsi[]'] = [rpsData['cpl_deskripsi[]']];
+    }
+    rpsData.cpl_deskripsi = rpsData['cpl_deskripsi[]'];
+  }
   const rawData = fs.readFileSync(rpsPath);
   const rps = JSON.parse(rawData);
 
