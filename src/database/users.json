@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "email": "admin@polteku.ac.id",
+    "username": "admin",
+    "password": "password",
+    "role": "admin",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "email": "rezki@gmail.com",
+    "username": "rezki",
+    "password": "password",
+    "role": "dosen",
+    "status": "active"
+  }
+]

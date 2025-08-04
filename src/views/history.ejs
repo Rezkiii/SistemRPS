@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+
+<div class="container-custom">
+    <div class="card">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="card-title">Your RPS Documents</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% if (rps.length > 0) { %>
+                <% rps.forEach(r => { %>
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-1"><%= r.nama_mk %></h3>
+                        <p class="card-subtitle"><%= r.kode_mk %></p>
+                        <p class="text-xs text-gray-400 mb-2">Created on: <%= new Date(r.tanggal_penyusunan).toLocaleDateString() %></p>
+                        <div class="flex gap-2 mt-4">
+                            <a href="#" class="btn-primary text-xs">View</a>
+                            <a href="#" class="btn-secondary text-xs">Edit</a>
+                            <a href="#" style="background:#ef4444" class="btn-secondary text-xs" data-id="<%= r.id %>" onclick="deleteRps(this)">Delete</a>
+                            <a href="/export/word/<%= r.id %>" class="btn-primary text-xs" style="background:#10b981">Download Word</a>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="text-gray-500">You have not created any RPS documents yet.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  if (window.location.search.includes('saved=1')) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Data telah disimpan',
+      showConfirmButton: false,
+      timer: 1800
+    });
+  }
+</script>
+<script>
+function deleteRps(el) {
+  const id = el.getAttribute('data-id');
+  Swal.fire({
+    title: 'Yakin ingin menghapus data?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Ya, hapus!',
+    cancelButtonText: 'Batal'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch('/delete-rps/' + id, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Data berhasil dihapus',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          // Hapus card dari DOM
+          el.closest('.card').remove();
+        } else {
+          Swal.fire('Gagal', data.message || 'Gagal menghapus data', 'error');
+        }
+      });
+    }
+  });
+}
+</script>
+</script>

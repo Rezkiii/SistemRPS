@@ -1,0 +1,195 @@
+[
+  {
+    "nama_mk": "web",
+    "kode_mk": "tkj01",
+    "rumpun_mk": "Mata Kuliah Keahlian",
+    "semester": "3",
+    "tahun_akademik": "2025",
+    "sks_teori": "1",
+    "sks_praktikum": "2",
+    "bentuk_pelajaran": "Kuliah",
+    "metode_pembelajaran": "Small Group Discussion",
+    "strategi_pembelajaran": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "modalitas_luring": "test",
+    "modalitas_daring": "test",
+    "tanggal_penyusunan": "2025-08-21",
+    "dosen_pengampu[]": [
+      "test"
+    ],
+    "deskripsi_singkat_mk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "pustaka_utama[]": [
+      "testr"
+    ],
+    "pustaka_pendukung[]": [
+      "test"
+    ],
+    "penjamin_mutu": "test",
+    "dosen_pengembang_rps": "rezki",
+    "koordinator_program_studi": "test",
+    "cpl[]": [
+      "CPL01"
+    ],
+    "cpmk[CPMK01][cpl_code]": "CPL01",
+    "cpmk[CPMK01][cpl_description]": "Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan",
+    "cpmk[CPMK01][deskripsi]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][deskripsi]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][pekan]": "1",
+    "sub_cpmk[CPMK01][1][indikator]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][teknik_kriteria]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][metode_luring]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][metode_daring]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][materi]": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    "sub_cpmk[CPMK01][1][bobot]": "10",
+    "userId": 2,
+    "dosen_pengampu": [
+      "test"
+    ],
+    "pustaka_utama": [
+      "testr"
+    ],
+    "pustaka_pendukung": [
+      "test"
+    ],
+    "cpl": [
+      "CPL01"
+    ],
+    "id": 1
+  },
+  {
+    "nama_mk": "web",
+    "kode_mk": "TEST",
+    "rumpun_mk": "Mata Kuliah Keahlian",
+    "semester": "3",
+    "tahun_akademik": "2025",
+    "sks_teori": "1",
+    "sks_praktikum": "1",
+    "bentuk_pelajaran": "Kuliah",
+    "metode_pembelajaran": "Discovery Learning",
+    "strategi_pembelajaran": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "modalitas_luring": "testt",
+    "modalitas_daring": "testtt",
+    "tanggal_penyusunan": "2025-08-19",
+    "dosen_pengampu[]": [
+      "elmanuk",
+      "eaaa"
+    ],
+    "deskripsi_singkat_mk": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "pustaka_utama[]": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)",
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "pustaka_pendukung[]": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "penjamin_mutu": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "dosen_pengembang_rps": "rezki",
+    "koordinator_program_studi": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "cpl[]": [
+      "CPL01",
+      "CPL02"
+    ],
+    "cpmk[CPMK01][cpl_code]": "CPL01",
+    "cpmk[CPMK01][cpl_description]": "Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan",
+    "cpmk[CPMK01][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "cpmk[CPMK02][cpl_code]": "CPL02",
+    "cpmk[CPMK02][cpl_description]": "Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis.",
+    "cpmk[CPMK02][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][pekan]": "1",
+    "sub_cpmk[CPMK01][1][indikator]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][teknik_kriteria]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][metode_luring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][metode_daring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][materi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][bobot]": "10",
+    "sub_cpmk[CPMK01][2][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][2][pekan]": "2",
+    "sub_cpmk[CPMK01][2][indikator]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][2][teknik_kriteria]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][2][metode_luring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][2][metode_daring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][2][materi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][2][bobot]": "10",
+    "sub_cpmk[CPMK02][3][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK02][3][pekan]": "3",
+    "sub_cpmk[CPMK02][3][indikator]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK02][3][teknik_kriteria]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK02][3][metode_luring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK02][3][metode_daring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK02][3][materi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK02][3][bobot]": "10",
+    "userId": 2,
+    "dosen_pengampu": [
+      "elmanuk",
+      "eaaa"
+    ],
+    "pustaka_utama": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)",
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "pustaka_pendukung": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "cpl": [
+      "CPL01",
+      "CPL02"
+    ],
+    "id": 2
+  },
+  {
+    "nama_mk": "testtt",
+    "kode_mk": "eaaq",
+    "rumpun_mk": "Mata Kuliah Keahlian",
+    "semester": "2",
+    "tahun_akademik": "2025",
+    "sks_teori": "2",
+    "sks_praktikum": "2",
+    "bentuk_pelajaran": "Kuliah",
+    "metode_pembelajaran": "Small Group Discussion",
+    "strategi_pembelajaran": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "modalitas_luring": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "modalitas_daring": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "tanggal_penyusunan": "2025-08-21",
+    "dosen_pengampu[]": [
+      "elamnuk"
+    ],
+    "deskripsi_singkat_mk": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "pustaka_utama[]": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "pustaka_pendukung[]": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "penjamin_mutu": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "dosen_pengembang_rps": "rezki",
+    "koordinator_program_studi": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "cpl[]": [
+      "CPL01"
+    ],
+    "cpmk[CPMK01][cpl_code]": "CPL01",
+    "cpmk[CPMK01][cpl_description]": "Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan",
+    "cpmk[CPMK01][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][deskripsi]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][pekan]": "1",
+    "sub_cpmk[CPMK01][1][indikator]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][teknik_kriteria]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][metode_luring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][metode_daring]": "/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][materi]": "/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)/media/rezki/Kuliah/form/rpssss (10th copy)",
+    "sub_cpmk[CPMK01][1][bobot]": "10",
+    "userId": 2,
+    "dosen_pengampu": [
+      "elamnuk"
+    ],
+    "pustaka_utama": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "pustaka_pendukung": [
+      "/media/rezki/Kuliah/form/rpssss (10th copy)"
+    ],
+    "cpl": [
+      "CPL01"
+    ],
+    "id": 3
+  }
+]

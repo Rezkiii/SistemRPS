@@ -1,0 +1,64 @@
+/* Custom style for RPS App - improve card, button, and form appearance */
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+.card-subtitle {
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+  border: none;
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+.btn-secondary {
+  background: #6b7280;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+  border: none;
+}
+.btn-secondary:hover {
+  background: #374151;
+}
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+.label {
+  display: block;
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}

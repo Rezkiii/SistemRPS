@@ -1,0 +1,244 @@
+<%- include('partials/header') %>
+
+<div class="container-custom">
+    <form id="rps-form" action="/save-rps" method="POST">
+        <!-- Step 1: Identitas Mata Kuliah -->
+        <div id="step-1" class="step card">
+            <!-- Step Indicator -->
+            <div class="mb-6 text-center">
+                <span class="inline-block bg-blue-100 text-blue-700 px-4 py-1 rounded-full font-semibold">Step 1 dari 5: Identitas Mata Kuliah</span>
+            </div>
+            <h2 class="card-title">Identitas Mata Kuliah</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="label" for="nama_mk">Nama Mata Kuliah</label>
+                    <input class="input" id="nama_mk" name="nama_mk" type="text" required>
+                </div>
+                <div>
+                    <label class="label" for="kode_mk">Kode Mata Kuliah</label>
+                    <input class="input" id="kode_mk" name="kode_mk" type="text" required>
+                </div>
+                <div>
+                    <label class="label" for="rumpun_mk">Rumpun Mata Kuliah</label>
+                    <select class="input" id="rumpun_mk" name="rumpun_mk" required>
+                        <option value="Mata Kuliah Keahlian">Mata Kuliah Keahlian</option>
+                        <option value="Mata Kuliah Dasar Keahlian">Mata Kuliah Dasar Keahlian</option>
+                        <option value="Mata Kuliah Umum">Mata Kuliah Umum</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label" for="semester">Semester Ke-</label>
+                    <select class="input" id="semester" name="semester" required>
+                        <option value="">Pilih Semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label" for="tahun_akademik">Tahun Akademik</label>
+                    <input class="input" id="tahun_akademik" name="tahun_akademik" type="number" required>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="w-full">
+                            <label class="label" for="sks_teori">Bobot SKS Teori</label>
+                            <input class="input" id="sks_teori" name="sks_teori" type="number" min="0" required>
+                        </div>
+                        <div class="w-full">
+                            <label class="label" for="sks_praktikum">Bobot SKS Praktikum</label>
+                            <input class="input" id="sks_praktikum" name="sks_praktikum" type="number" min="0" required>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="label" for="bentuk_pelajaran">Bentuk Pelajaran</label>
+                    <select class="input" id="bentuk_pelajaran" name="bentuk_pelajaran" required>
+                        <option value="Kuliah">Kuliah</option>
+                        <option value="Responsi">Responsi</option>
+                        <option value="Tutorial">Tutorial</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Praktikum">Praktikum</option>
+                        <option value="Praktik Studio">Praktik Studio</option>
+                        <option value="Penelitian">Penelitian</option>
+                        <option value="Perancangan">Perancangan</option>
+                        <option value="Pengembangan">Pengembangan</option>
+                        <option value="Tugas Akhir">Tugas Akhir</option>
+                        <option value="Pelatihan">Pelatihan</option>
+                        <option value="Bela negara">Bela negara</option>
+                        <option value="Magang">Magang</option>
+                        <option value="Pengabdian Kepada Masyarakat">Pengabdian Kepada Masyarakat</option>
+                        <option value="Wirausaha">Wirausaha</option>
+                        <option value="Pertukaran Pelajar">Pertukaran Pelajar</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label" for="metode_pembelajaran">Metode Pembelajaran</label>
+                    <select class="input" id="metode_pembelajaran" name="metode_pembelajaran" required>
+                        <option value="Small Group Discussion">Small Group Discussion</option>
+                        <option value="Role-Play & Simulation">Role-Play & Simulation</option>
+                        <option value="Discovery Learning">Discovery Learning</option>
+                        <option value="Self-Directed Learning">Self-Directed Learning</option>
+                        <option value="Cooperative Learning">Cooperative Learning</option>
+                        <option value="Collaborative Learning">Collaborative Learning</option>
+                        <option value="Contextual Learning">Contextual Learning</option>
+                        <option value="Project Based Learning">Project Based Learning</option>
+                        <option value="Problem Based Learning & Inquiry">Problem Based Learning & Inquiry</option>
+                        <option value="Case Study">Case Study</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="label" for="strategi_pembelajaran">Strategi Pembelajaran</label>
+                    <textarea class="input" id="strategi_pembelajaran" name="strategi_pembelajaran" rows="3" required></textarea>
+                </div>
+                <div>
+                    <label class="label" for="modalitas_luring">Modalitas Luring</label>
+                    <input class="input" id="modalitas_luring" name="modalitas_luring" type="text" required>
+                </div>
+                <div>
+                    <label class="label" for="modalitas_daring">Modalitas Daring</label>
+                    <input class="input" id="modalitas_daring" name="modalitas_daring" type="text" required>
+                </div>
+                <div>
+                    <label class="label" for="tanggal_penyusunan">Tanggal Penyusunan</label>
+                    <input class="input" id="tanggal_penyusunan" name="tanggal_penyusunan" type="date" required>
+                </div>
+                <div id="dosen-pengampu-container">
+                    <label class="label">Dosen Pengampu</label>
+                    <div class="flex items-center mb-2">
+                        <input class="input" name="dosen_pengampu[]" type="text" required>
+                        <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addDosenPengampu()">+</button>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="label" for="deskripsi_singkat_mk">Deskripsi Singkat Mata Kuliah</label>
+                    <textarea class="input" id="deskripsi_singkat_mk" name="deskripsi_singkat_mk" rows="3" required></textarea>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 md:col-span-2">
+                  <div class="w-full">
+                    <label class="label">Pustaka Utama</label>
+                    <div id="pustaka-utama-list" class="flex flex-col gap-2">
+                      <div class="flex items-center mb-2">
+                        <input class="input" name="pustaka_utama[]" type="text" required>
+                        <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addPustakaUtama()">+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full">
+                    <label class="label">Pustaka Pendukung</label>
+                    <div id="pustaka-pendukung-list" class="flex flex-col gap-2">
+                      <div class="flex items-center mb-2">
+                        <input class="input" name="pustaka_pendukung[]" type="text" required>
+                        <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addPustakaPendukung()">+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-4">
+                <button type="button" class="btn-primary" onclick="validateStep1AndNext()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Otorisasi -->
+        <div id="step-2" class="step hidden card">
+            <h2 class="card-title">Step 2: Otorisasi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="label" for="penjamin_mutu">Penjamin Mutu</label>
+                    <input class="input" id="penjamin_mutu" name="penjamin_mutu" type="text" required>
+                </div>
+                <div>
+                    <label class="label" for="dosen_pengembang_rps">Dosen Pengembang RPS</label>
+                    <input class="input" id="dosen_pengembang_rps" name="dosen_pengembang_rps" type="text" value="<%= user.username %>" readonly>
+                </div>
+                <div>
+                    <label class="label" for="koordinator_program_studi">Koordinator Program Studi</label>
+                    <input class="input" id="koordinator_program_studi" name="koordinator_program_studi" type="text" required>
+                </div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Capaian Pembelajaran Lulusan -->
+        <div id="step-3" class="step hidden card">
+            <h2 class="card-title">Step 3: Capaian Pembelajaran Lulusan</h2>
+            <div class="grid grid-cols-1 gap-2">
+                <div><input type="checkbox" name="cpl[]" value="CPL01" data-description="Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan"> CPL01 Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL02" data-description="Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis."> CPL02 Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis.</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL03" data-description="Mengelola pembelajaran sepanjang hayat untuk pengembangan profesional diri dalam lingkungan kerja global yang dinamis dan kompetitif."> CPL03 Mengelola pembelajaran sepanjang hayat untuk pengembangan profesional diri dalam lingkungan kerja global yang dinamis dan kompetitif.</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL04" data-description="Menyelesaikan permasalahan dan tugas teknis jaringan komputer melalui perancangan, konfigurasi, pengujian, dan pengelolaan perangkat serta infrastruktur jaringan pada berbagai skala topologi dalam konteks operasional sistem komunikasi data dan administrasi jaringan."> CPL04 Menyelesaikan permasalahan dan tugas teknis jaringan komputer melalui perancangan, konfigurasi, pengujian, dan pengelolaan perangkat serta infrastruktur jaringan pada berbagai skala topologi dalam konteks operasional sistem komunikasi data dan administrasi jaringan.</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL05" data-description="Merancang infrastruktur jaringan komputer serta sistem virtualisasi dan komputasi awan dalam konteks pembangunan dan pengelolaan layanan TIK yang fleksibel, skalabel, dan terotomasi. (C6)"> CPL05 Merancang infrastruktur jaringan komputer serta sistem virtualisasi dan komputasi awan dalam konteks pembangunan dan pengelolaan layanan TIK yang fleksibel, skalabel, dan terotomasi. (C6)</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL06" data-description="Mengintegrasikan teknologi jaringan wireless & mobile, sistem tertanam, dan komputasi terdistribusi dalam perancangan dan pengelolaan solusi komunikasi data nirkabel yang andal dan adaptif untuk lingkungan industri dan IoT."> CPL06 Mengintegrasikan teknologi jaringan wireless & mobile, sistem tertanam, dan komputasi terdistribusi dalam perancangan dan pengelolaan solusi komunikasi data nirkabel yang andal dan adaptif untuk lingkungan industri dan IoT.</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL07" data-description="Mengembangkan solusi berbasis IoT dan sistem tertanam dalam integrasi perangkat keras, perangkat lunak, dan komunikasi data."> CPL07 Mengembangkan solusi berbasis IoT dan sistem tertanam dalam integrasi perangkat keras, perangkat lunak, dan komunikasi data.</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL08" data-description="Merancang solusi berbasis prinsip keamanan siber dan pembelajaran mesin untuk memitigasi risiko serta memperkuat ketahanan infrastruktur informasi"> CPL08 Merancang solusi berbasis prinsip keamanan siber dan pembelajaran mesin untuk memitigasi risiko serta memperkuat ketahanan infrastruktur informasi</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL09" data-description="Mengelola infrastruktur virtualisasi dan komputasi awan beserta pipeline DevOps dalam otomatisasi penyediaan layanan TIK yang skalabel, andal, dan berkelanjutan"> CPL09 Mengelola infrastruktur virtualisasi dan komputasi awan beserta pipeline DevOps dalam otomatisasi penyediaan layanan TIK yang skalabel, andal, dan berkelanjutan</div>
+                <div><input type="checkbox" name="cpl[]" value="CPL10" data-description="Mengkomunikasikan ide dan solusi teknis dalam kegiatan penelitian atau kerja sama tim multidisiplin secara ilmiah dan profesional."> CPL10 Mengkomunikasikan ide dan solusi teknis dalam kegiatan penelitian atau kerja sama tim multidisiplin secara ilmiah dan profesional.</div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Capaian Pembelajaran Matakuliah -->
+        <div id="step-4" class="step hidden card">
+            <h2 class="card-title">Step 4: Capaian Pembelajaran Matakuliah</h2>
+            <div id="cpmk-container">
+                <!-- CPMK will be added here dynamically -->
+            </div>
+            <div class="flex justify-between mt-4">
+                <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Sub-CPMK -->
+        <div id="step-5" class="step hidden card">
+            <h2 class="card-title">Step 5: Sub-CPMK</h2>
+            <div id="sub-cpmk-container">
+                <!-- Sub-CPMK will be added here dynamically -->
+            </div>
+            <div class="flex justify-between mt-4">
+                <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                <button class="btn-primary" type="submit">Save RPS</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+// Validasi wajib isi step 1 sebelum next
+function validateStep1AndNext() {
+    const requiredFields = [
+        'nama_mk', 'kode_mk', 'rumpun_mk', 'semester', 'tahun_akademik',
+        'sks_teori', 'sks_praktikum', 'bentuk_pelajaran', 'metode_pembelajaran',
+        'strategi_pembelajaran', 'modalitas_luring', 'modalitas_daring', 'tanggal_penyusunan',
+        'dosen_pengampu[]', 'deskripsi_singkat_mk', 'pustaka_utama[]', 'pustaka_pendukung[]'
+    ];
+    let valid = true;
+    for (const name of requiredFields) {
+        let el = document.getElementsByName(name)[0];
+        if (el && !el.value) {
+            el.classList.add('ring-2', 'ring-red-400');
+            valid = false;
+        } else if (el) {
+            el.classList.remove('ring-2', 'ring-red-400');
+        }
+    }
+    if (!valid) {
+        alert('Mohon lengkapi semua data pada Step 1 sebelum melanjutkan!');
+        return;
+    }
+    nextStep();
+}
+</script>
+<%- include('partials/footer') %>
