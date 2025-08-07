@@ -219,43 +219,83 @@ function removeCPMK(cpmkId, cplValue) {
 }
 
 function addSubCPMK(cpmkId) {
-    subCpmkCounter++;
     const subCpmkList = document.getElementById(`sub-cpmk-list-${cpmkId}`);
+    if (!subCpmkList) {
+        alert('Gagal menambah Sub-CPMK: container tidak ditemukan. Silakan refresh halaman atau pastikan CPMK sudah ditambahkan.');
+        return;
+    }
+    // Cari index terkecil yang belum dipakai
+    let usedIndexes = Array.from(subCpmkList.querySelectorAll('[data-subcpmk-index]')).map(e => parseInt(e.getAttribute('data-subcpmk-index')));
+    let nextIndex = 1;
+    while (usedIndexes.includes(nextIndex)) {
+        nextIndex++;
+    }
 
     const newSubCpmkDiv = document.createElement('div');
     newSubCpmkDiv.className = 'mt-2 p-2 border-l-4 border-green-500 grid grid-cols-1 md:grid-cols-2 gap-4';
+    newSubCpmkDiv.setAttribute('data-subcpmk-index', nextIndex);
     newSubCpmkDiv.innerHTML = `
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Deskripsi Sub-CPMK</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][deskripsi]" rows="2" required></textarea>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][deskripsi]" rows="2" required></textarea>
         </div>
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Pekan ke-</label>
-            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][pekan]" required>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][pekan_awal]" min="1" required placeholder="Awal">
+                <span>-</span>
+                <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][pekan_akhir]" min="1" required placeholder="Akhir">
+            </div>
         </div>
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Penilaian Indikator</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][indikator]" rows="2" required></textarea>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][indikator]" rows="2" required></textarea>
         </div>
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Penilaian Teknik & Kriteria</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][teknik_kriteria]" rows="2" required></textarea>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][teknik_kriteria]" rows="2" required></textarea>
         </div>
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Metode Pembelajaran Luring</label>
-            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][metode_luring]" required>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][metode_luring]" rows="2" required placeholder="Contoh: Tatap Muka, Praktikum, dll"></textarea>
         </div>
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Metode Pembelajaran Daring</label>
-            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][metode_daring]" required>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][metode_daring]" rows="2" required placeholder="Contoh: Zoom, Google Meet, dll"></textarea>
         </div>
         <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Materi Pembelajaran</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][materi]" rows="2" required></textarea>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][materi]" rows="2" required></textarea>
+        </div>
+
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Modalitas</label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][modalitas]" rows="2" placeholder="Contoh: Luring/Daring" required></textarea>
         </div>
         <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Bentuk Pembelajaran</label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][bentuk_pembelajaran]" rows="2" placeholder="Contoh: Praktikum, Diskusi, dll" required></textarea>
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Strategi Pembelajaran</label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][strategi_pembelajaran]" rows="2" placeholder="Contoh: Kolaboratif, Mandiri, dll" required></textarea>
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Metode</label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][metode]" rows="2" placeholder="Contoh: Ceramah, Diskusi, dll" required></textarea>
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Media</label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][media]" rows="2" placeholder="Contoh: PPT, Video, dll" required></textarea>
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Sumber Belajar</label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][sumber_belajar]" rows="2" placeholder="Contoh: Buku, Jurnal, dll" required></textarea>
+        </div>
+        
+        <div>
             <label class="block text-gray-700 text-sm font-bold mb-2">Bobot Penilaian (%)</label>
-            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${subCpmkCounter}][bobot]" required>
+            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" name="sub_cpmk[${cpmkId}][${nextIndex}][bobot]" required>
         </div>
         <div class="md:col-span-2 text-right">
             <button type="button" class="text-red-500 font-bold" onclick="removeElement(this.parentElement.parentElement)">Remove Sub-CPMK</button>

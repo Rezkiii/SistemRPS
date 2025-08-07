@@ -6,6 +6,7 @@ const session = require('express-session');
 const app = express();
 const port = 3000;
 //found me
+
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -32,6 +33,11 @@ app.use('/', indexRouter);
 app.use('/', exportRouter);
 
 
-app.listen(port, () => {
-  console.log(`Server started on http://localhost:${port}`);
+// --- PERUBAHAN ADA DI BLOK DI BAWAH INI ---
+// Server akan berjalan di semua alamat IP yang tersedia (0.0.0.0)
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server started and listening on port ${port}`);
+  console.log('You can now access it from other devices on the same network.');
+  console.log('From this computer, you can use: http://localhost:3000');
+  console.log('From other devices, find your local IP and use: http://<ALAMAT_IP_LOKAL_ANDA>:3000');
 });

@@ -160,6 +160,13 @@ router.get('/history', isAuthenticated, (req, res) => {
 });
 
 
+// Admin melihat semua RPS
+router.get('/admin/rps', isAuthenticated, isAdmin, (req, res) => {
+  const rawData = fs.readFileSync(rpsPath);
+  const rps = JSON.parse(rawData);
+  res.render('history', { title: 'Semua RPS Dosen', user: req.session.user, rps });
+});
+
 module.exports = router;
 // Hapus RPS
 router.post('/delete-rps/:id', isAuthenticated, (req, res) => {

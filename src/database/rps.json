@@ -80,5 +80,58 @@
       "CPL02"
     ],
     "id": 1
+  },
+  {
+    "nama_mk": "taojdaoiwjd",
+    "kode_mk": "oiajsoidjaoid",
+    "rumpun_mk": "Mata Kuliah Keahlian",
+    "semester": "2",
+    "tahun_akademik": "2025/2026",
+    "mk_syarat": "oaiwjdoaijdw",
+    "sks_teori": "2",
+    "sks_praktikum": "2",
+    "tanggal_penyusunan": "2025-02-09",
+    "dosen_pengampu[]": [
+      "kjasndkjsandkjwand"
+    ],
+    "deskripsi_singkat_mk": "tesoijdaoijdoiwajdiwajd",
+    "pustaka_utama[]": [
+      "oadjoiajds"
+    ],
+    "pustaka_pendukung[]": [
+      "doawdoia"
+    ],
+    "penjamin_mutu": "kjsandkjandkjsand",
+    "dosen_pengembang_rps": "admin",
+    "koordinator_program_studi": "kajsndkjandkjaw",
+    "cpl[]": [
+      "CPL01"
+    ],
+    "cpmk[CPMK01][cpl_code]": "CPL01",
+    "cpmk[CPMK01][cpl_description]": "Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan",
+    "cpmk[CPMK01][deskripsi]": "✅",
+    "sub_cpmk[CPMK01][1][deskripsi]": "testtt",
+    "sub_cpmk[CPMK01][1][pekan_awal]": "1",
+    "sub_cpmk[CPMK01][1][pekan_akhir]": "1",
+    "sub_cpmk[CPMK01][1][indikator]": "testttt",
+    "sub_cpmk[CPMK01][1][teknik_kriteria]": "tlkadjlajdlksajdlksa",
+    "sub_cpmk[CPMK01][1][metode_luring]": "kajwdlakjdlkasjd",
+    "sub_cpmk[CPMK01][1][metode_daring]": "lkjlksjdksajdlkajdlkqj",
+    "sub_cpmk[CPMK01][1][materi]": "lkajdlkawjdlkwaj",
+    "sub_cpmk[CPMK01][1][bobot]": "10",
+    "userId": 1,
+    "dosen_pengampu": [
+      "kjasndkjsandkjwand"
+    ],
+    "pustaka_utama": [
+      "oadjoiajds"
+    ],
+    "pustaka_pendukung": [
+      "doawdoia"
+    ],
+    "cpl": [
+      "CPL01"
+    ],
+    "id": 2
   }
 ]
