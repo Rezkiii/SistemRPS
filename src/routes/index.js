@@ -152,11 +152,119 @@ router.post('/save-rps', isAuthenticated, (req, res) => {
 });
 
 // History page
+
 router.get('/history', isAuthenticated, (req, res) => {
-    const rawData = fs.readFileSync(rpsPath);
-    const rps = JSON.parse(rawData);
-    const userRps = rps.filter(r => r.userId === req.session.user.id);
-    res.render('history', { title: 'History', user: req.session.user, rps: userRps });
+  const rawData = fs.readFileSync(rpsPath);
+  const rps = JSON.parse(rawData);
+  let userRps;
+  if (req.session.user.role === 'admin') {
+    userRps = rps; // admin bisa lihat semua
+  } else {
+    userRps = rps.filter(r => r.userId === req.session.user.id);
+  }
+  res.render('history', { title: 'History', user: req.session.user, rps: userRps });
+});
+
+// View detail RPS
+
+router.get('/history/view/:id', isAuthenticated, (req, res) => {
+  const rpsId = req.params.id;
+  const rawData = fs.readFileSync(rpsPath);
+  const rps = JSON.parse(rawData);
+  let item;
+  if (req.session.user.role === 'admin') {
+    item = rps.find(r => String(r.id) === String(rpsId));
+  } else {
+    item = rps.find(r => String(r.id) === String(rpsId) && r.userId === req.session.user.id);
+  }
+  res.render('view-rps', { title: 'Detail RPS', user: req.session.user, rps: item });
+});
+
+// Edit RPS form
+router.get('/edit-rps/:id', isAuthenticated, (req, res) => {
+  const rpsId = req.params.id;
+  const rawData = fs.readFileSync(rpsPath);
+  const rps = JSON.parse(rawData);
+  let item;
+  if (req.session.user.role === 'admin') {
+    item = rps.find(r => String(r.id) === String(rpsId));
+  } else {
+    item = rps.find(r => String(r.id) === String(rpsId) && r.userId === req.session.user.id);
+  }
+
+  if (!item) {
+    return res.status(404).send('RPS not found or you do not have permission to edit it.');
+  }
+
+  res.render('edit-rps', { title: 'Edit RPS', user: req.session.user, rps: item });
+});
+
+// Update RPS data
+router.post('/edit-rps/:id', isAuthenticated, (req, res) => {
+  const rpsId = parseInt(req.params.id, 10);
+  const updatedRpsData = req.body;
+  updatedRpsData.userId = req.session.user.id; // Tetap simpan userId
+
+  const rawData = fs.readFileSync(rpsPath);
+  let rps = JSON.parse(rawData);
+
+  const index = rps.findIndex(r => r.id === rpsId);
+
+  if (index === -1) {
+    return res.status(404).send('RPS not found.');
+  }
+
+  // Hanya izinkan pemilik atau admin untuk mengedit
+  if (rps[index].userId !== req.session.user.id && req.session.user.role !== 'admin') {
+    return res.status(403).send('You do not have permission to edit this RPS.');
+  }
+
+  // Gabungkan data lama dengan data baru
+  // Ini penting agar field yang tidak ada di form tidak hilang
+  const originalRps = rps[index];
+  const newRpsData = { ...originalRps, ...updatedRpsData };
+
+  // Pastikan field multi-value selalu array
+  const multiFields = ['dosen_pengampu', 'pustaka_utama', 'pustaka_pendukung', 'cpl'];
+  multiFields.forEach(field => {
+    if (newRpsData[`${field}[]`]) {
+      if (!Array.isArray(newRpsData[`${field}[]`])) {
+        newRpsData[`${field}[]`] = [newRpsData[`${field}[]`]];
+      }
+      newRpsData[field] = newRpsData[`${field}[]`];
+    } else {
+      // Jika tidak ada data baru, pertahankan data lama atau set ke array kosong
+      newRpsData[field] = originalRps[field] || [];
+    }
+  });
+
+  // Simpan cpl_deskripsi jika ada
+  if (updatedRpsData['cpl_deskripsi[]']) {
+    if (!Array.isArray(updatedRpsData['cpl_deskripsi[]'])) {
+      updatedRpsData['cpl_deskripsi[]'] = [updatedRpsData['cpl_deskripsi[]']];
+    }
+    newRpsData.cpl_deskripsi = updatedRpsData['cpl_deskripsi[]'];
+  }
+
+  // Hapus data cpmk dan sub_cpmk lama untuk diganti dengan yang baru
+  // Ini untuk menghindari data usang jika ada CPMK yang dihapus di form
+  const fieldsToKeep = Object.keys(newRpsData).filter(k => !k.startsWith('cpmk[') && !k.startsWith('sub_cpmk['));
+  let cleanedRps = {};
+  fieldsToKeep.forEach(k => {
+    cleanedRps[k] = newRpsData[k];
+  });
+  
+  // Gabungkan dengan data cpmk dan sub_cpmk yang baru dari form
+  const finalRpsData = { ...cleanedRps, ...updatedRpsData };
+
+  // Pastikan ID tidak berubah
+  finalRpsData.id = rpsId;
+
+  rps[index] = finalRpsData;
+
+  fs.writeFileSync(rpsPath, JSON.stringify(rps, null, 2));
+
+  res.redirect('/history?updated=1');
 });
 
 

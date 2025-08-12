@@ -1,0 +1,119 @@
+<%- include('partials/header') %>
+
+<div class="container-custom flex justify-center items-start min-h-screen bg-gray-50 py-8">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
+        <h2 class="text-2xl font-bold mb-6 text-blue-700 border-b pb-2">Detail RPS</h2>
+        <% if (rps) { %>
+            <table class="table-auto w-full mb-6 border rounded overflow-hidden">
+                <tbody class="divide-y divide-gray-200">
+                    <tr><td class="py-2 font-semibold w-1/3 text-gray-700">Nama Mata Kuliah</td><td class="py-2"><%= rps.nama_mk %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Kode Mata Kuliah</td><td class="py-2"><%= rps.kode_mk %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Rumpun MK</td><td class="py-2"><%= rps.rumpun_mk %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Semester</td><td class="py-2"><%= rps.semester %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Tahun Akademik</td><td class="py-2"><%= rps.tahun_akademik %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Mata Kuliah Syarat</td><td class="py-2"><%= rps.mk_syarat %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">SKS Teori</td><td class="py-2"><%= rps.sks_teori %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">SKS Praktikum</td><td class="py-2"><%= rps.sks_praktikum %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Tanggal Penyusunan</td><td class="py-2"><%= new Date(rps.tanggal_penyusunan).toLocaleDateString() %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Dosen Pengampu</td><td class="py-2"><%= (rps['dosen_pengampu[]'] || rps.dosen_pengampu || []).join(', ') %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Deskripsi Singkat</td><td class="py-2"><%= rps.deskripsi_singkat_mk %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Pustaka Utama</td><td class="py-2"><%= (rps['pustaka_utama[]'] || rps.pustaka_utama || []).join(', ') %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Pustaka Pendukung</td><td class="py-2"><%= (rps['pustaka_pendukung[]'] || rps.pustaka_pendukung || []).join(', ') %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Penjamin Mutu</td><td class="py-2"><%= rps.penjamin_mutu %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Dosen Pengembang RPS</td><td class="py-2"><%= rps.dosen_pengembang_rps %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">Koordinator Program Studi</td><td class="py-2"><%= rps.koordinator_program_studi %></td></tr>
+                    <tr><td class="py-2 font-semibold text-gray-700">CPL</td><td class="py-2"><%= (rps['cpl[]'] || rps.cpl || []).join(', ') %></td></tr>
+                </tbody>
+            </table>
+
+            <!-- CPMK -->
+            <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">CPMK</h3>
+            <div class="overflow-x-auto">
+            <table class="table-auto w-full mb-6 border rounded overflow-hidden">
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="px-2 py-2">ID</th>
+                        <th class="px-2 py-2">Kode CPL</th>
+                        <th class="px-2 py-2">Deskripsi CPL</th>
+                        <th class="px-2 py-2">Deskripsi CPMK</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <% Object.keys(rps).filter(k => k.startsWith('cpmk[')).forEach(function(key) { 
+                    var match = key.match(/^cpmk\[(CPMK\d+)\]\[(.+)\]$/);
+                    if (match && match[2] === 'deskripsi') {
+                        var id = match[1];
+                        var cpl_code = rps[`cpmk[${id}][cpl_code]`];
+                        var cpl_desc = rps[`cpmk[${id}][cpl_description]`];
+                        var deskripsi = rps[key];
+                %>
+                    <tr>
+                        <td class="px-2 py-2"><%= id %></td>
+                        <td class="px-2 py-2"><%= cpl_code %></td>
+                        <td class="px-2 py-2"><%= cpl_desc %></td>
+                        <td class="px-2 py-2"><%= deskripsi %></td>
+                    </tr>
+                <% } }); %>
+                </tbody>
+            </table>
+            </div>
+
+            <!-- sub-CPMK -->
+            <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">Sub-CPMK</h3>
+            <div class="overflow-x-auto">
+            <table class="table-auto w-full mb-6 border rounded overflow-hidden">
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="px-2 py-2">CPMK</th>
+                        <th class="px-2 py-2">Pekan</th>
+                        <th class="px-2 py-2">Indikator</th>
+                        <th class="px-2 py-2">Teknik & Kriteria</th>
+                        <th class="px-2 py-2">Metode Luring</th>
+                        <th class="px-2 py-2">Metode Daring</th>
+                        <th class="px-2 py-2">Materi</th>
+                        <th class="px-2 py-2">Bobot</th>
+                        <th class="px-2 py-2">Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <% Object.keys(rps).filter(k => k.startsWith('sub_cpmk[')).forEach(function(key) { 
+                    var match = key.match(/^sub_cpmk\[(CPMK\d+)\]\[(\d+)\]\[(.+)\]$/);
+                    if (match && match[3] === 'deskripsi') {
+                        var cpmk = match[1];
+                        var sub = match[2];
+                        var deskripsi = rps[key];
+                        var pekan = rps[`sub_cpmk[${cpmk}][${sub}][pekan]`] || rps[`sub_cpmk[${cpmk}][${sub}][pekan_awal]`] || '';
+                        var pekan_akhir = rps[`sub_cpmk[${cpmk}][${sub}][pekan_akhir]`] || '';
+                        var indikator = rps[`sub_cpmk[${cpmk}][${sub}][indikator]`] || '';
+                        var teknik = rps[`sub_cpmk[${cpmk}][${sub}][teknik_kriteria]`] || '';
+                        var luring = rps[`sub_cpmk[${cpmk}][${sub}][metode_luring]`] || '';
+                        var daring = rps[`sub_cpmk[${cpmk}][${sub}][metode_daring]`] || '';
+                        var materi = rps[`sub_cpmk[${cpmk}][${sub}][materi]`] || '';
+                        var bobot = rps[`sub_cpmk[${cpmk}][${sub}][bobot]`] || '';
+                %>
+                    <tr>
+                        <td class="px-2 py-2"><%= cpmk %></td>
+                        <td class="px-2 py-2"><%= pekan %><% if (pekan_akhir) { %> - <%= pekan_akhir %><% } %></td>
+                        <td class="px-2 py-2"><%= indikator %></td>
+                        <td class="px-2 py-2"><%= teknik %></td>
+                        <td class="px-2 py-2"><%= luring %></td>
+                        <td class="px-2 py-2"><%= daring %></td>
+                        <td class="px-2 py-2"><%= materi %></td>
+                        <td class="px-2 py-2"><%= bobot %></td>
+                        <td class="px-2 py-2"><%= deskripsi %></td>
+                    </tr>
+                <% } }); %>
+                </tbody>
+            </table>
+            </div>
+            <a href="/history" class="btn-secondary mt-4 px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600 inline-block">Kembali</a>
+        <% } else { %>
+            <div class="text-center py-8">
+                <p class="text-red-600 font-semibold mb-4">Data RPS tidak ditemukan.</p>
+                <a href="/history" class="btn-secondary mt-4 px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600 inline-block">Kembali</a>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

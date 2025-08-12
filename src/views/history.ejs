@@ -13,8 +13,8 @@
                         <p class="card-subtitle"><%= r.kode_mk %></p>
                         <p class="text-xs text-gray-400 mb-2">Created on: <%= new Date(r.tanggal_penyusunan).toLocaleDateString() %></p>
                         <div class="flex gap-2 mt-4">
-                            <a href="#" class="btn-primary text-xs">View</a>
-                            <a href="#" class="btn-secondary text-xs">Edit</a>
+                            <a href="/history/view/<%= r.id %>" class="btn-primary text-xs">View</a>
+                            <a href="/edit-rps/<%= r.id %>" class="btn-secondary text-xs">Edit</a>
                             <a href="#" style="background:#ef4444" class="btn-secondary text-xs" data-id="<%= r.id %>" onclick="deleteRps(this)">Delete</a>
                             <a href="/export/word/<%= r.id %>" class="btn-primary text-xs" style="background:#10b981">Download Word</a>
                         </div>
