@@ -31,7 +31,7 @@ router.get('/export/word/:id', isAuthenticated, (req, res) => {
   // Siapkan data untuk template
   const data = { ...item };
   // CPL Descriptions (bisa dipakai di template)
-  data.cplDescriptions = {
+  const allCplDescriptions = {
     CPL01: 'Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan',
     CPL02: 'Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis.',
     CPL03: 'Mengelola pembelajaran sepanjang hayat untuk pengembangan profesional diri dalam lingkungan kerja global yang dinamis dan kompetitif.',
@@ -43,6 +43,15 @@ router.get('/export/word/:id', isAuthenticated, (req, res) => {
     CPL09: 'Mengelola infrastruktur virtualisasi dan komputasi awan beserta pipeline DevOps dalam otomatisasi penyediaan layanan TIK yang skalabel, andal, dan berkelanjutan',
     CPL10: 'Mengkomunikasikan ide dan solusi teknis dalam kegiatan penelitian atau kerja sama tim multidisiplin secara ilmiah dan profesional.'
   };
+
+  data.cplList = (item['cpl[]'] || item.cpl || []).map(cplCode => {
+    return {
+      code: cplCode,
+      description: (item.cpl_descriptions && item.cpl_descriptions[cplCode])
+                   ? item.cpl_descriptions[cplCode]
+                   : (allCplDescriptions[cplCode] || 'No description available')
+    };
+  });
 
   // CPMK dan sub-CPMK untuk table (bisa diakses di template)
   data.cpmk = [];

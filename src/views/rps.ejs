@@ -127,17 +127,30 @@
         <!-- Step 3: Capaian Pembelajaran Lulusan -->
         <div id="step-3" class="step hidden card">
             <h2 class="card-title">Step 3: Capaian Pembelajaran Lulusan</h2>
-            <div class="grid grid-cols-1 gap-2">
-                <div><input type="checkbox" name="cpl[]" value="CPL01" data-description="Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan"> CPL01 Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL02" data-description="Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis."> CPL02 Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis.</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL03" data-description="Mengelola pembelajaran sepanjang hayat untuk pengembangan profesional diri dalam lingkungan kerja global yang dinamis dan kompetitif."> CPL03 Mengelola pembelajaran sepanjang hayat untuk pengembangan profesional diri dalam lingkungan kerja global yang dinamis dan kompetitif.</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL04" data-description="Menyelesaikan permasalahan dan tugas teknis jaringan komputer melalui perancangan, konfigurasi, pengujian, dan pengelolaan perangkat serta infrastruktur jaringan pada berbagai skala topologi dalam konteks operasional sistem komunikasi data dan administrasi jaringan."> CPL04 Menyelesaikan permasalahan dan tugas teknis jaringan komputer melalui perancangan, konfigurasi, pengujian, dan pengelolaan perangkat serta infrastruktur jaringan pada berbagai skala topologi dalam konteks operasional sistem komunikasi data dan administrasi jaringan.</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL05" data-description="Merancang infrastruktur jaringan komputer serta sistem virtualisasi dan komputasi awan dalam konteks pembangunan dan pengelolaan layanan TIK yang fleksibel, skalabel, dan terotomasi. (C6)"> CPL05 Merancang infrastruktur jaringan komputer serta sistem virtualisasi dan komputasi awan dalam konteks pembangunan dan pengelolaan layanan TIK yang fleksibel, skalabel, dan terotomasi. (C6)</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL06" data-description="Mengintegrasikan teknologi jaringan wireless & mobile, sistem tertanam, dan komputasi terdistribusi dalam perancangan dan pengelolaan solusi komunikasi data nirkabel yang andal dan adaptif untuk lingkungan industri dan IoT."> CPL06 Mengintegrasikan teknologi jaringan wireless & mobile, sistem tertanam, dan komputasi terdistribusi dalam perancangan dan pengelolaan solusi komunikasi data nirkabel yang andal dan adaptif untuk lingkungan industri dan IoT.</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL07" data-description="Mengembangkan solusi berbasis IoT dan sistem tertanam dalam integrasi perangkat keras, perangkat lunak, dan komunikasi data."> CPL07 Mengembangkan solusi berbasis IoT dan sistem tertanam dalam integrasi perangkat keras, perangkat lunak, dan komunikasi data.</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL08" data-description="Merancang solusi berbasis prinsip keamanan siber dan pembelajaran mesin untuk memitigasi risiko serta memperkuat ketahanan infrastruktur informasi"> CPL08 Merancang solusi berbasis prinsip keamanan siber dan pembelajaran mesin untuk memitigasi risiko serta memperkuat ketahanan infrastruktur informasi</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL09" data-description="Mengelola infrastruktur virtualisasi dan komputasi awan beserta pipeline DevOps dalam otomatisasi penyediaan layanan TIK yang skalabel, andal, dan berkelanjutan"> CPL09 Mengelola infrastruktur virtualisasi dan komputasi awan beserta pipeline DevOps dalam otomatisasi penyediaan layanan TIK yang skalabel, andal, dan berkelanjutan</div>
-                <div><input type="checkbox" name="cpl[]" value="CPL10" data-description="Mengkomunikasikan ide dan solusi teknis dalam kegiatan penelitian atau kerja sama tim multidisiplin secara ilmiah dan profesional."> CPL10 Mengkomunikasikan ide dan solusi teknis dalam kegiatan penelitian atau kerja sama tim multidisiplin secara ilmiah dan profesional.</div>
+            <div class="grid grid-cols-1 gap-4">
+                <%
+                const cpls = [
+                    { code: 'CPL01', desc: 'Menunjukkan sikap profesional yang berlandaskan ketakwaan, etika, integritas, nasionalisme, dan kepedulian sosial dalam menjalankan tugas di bidang teknik komputer dan jaringan' },
+                    { code: 'CPL02', desc: 'Menerapkan konsep matematika, komputasi, dan kecerdasan buatan dalam penyelesaian masalah teknis jaringan secara sistematis.' },
+                    { code: 'CPL03', desc: 'Mengelola pembelajaran sepanjang hayat untuk pengembangan profesional diri dalam lingkungan kerja global yang dinamis dan kompetitif.'},
+                    { code: 'CPL04', desc: 'Menyelesaikan permasalahan dan tugas teknis jaringan komputer melalui perancangan, konfigurasi, pengujian, dan pengelolaan perangkat serta infrastruktur jaringan pada berbagai skala topologi dalam konteks operasional sistem komunikasi data dan administrasi jaringan.'},
+                    { code: 'CPL05', desc: 'Merancang infrastruktur jaringan komputer serta sistem virtualisasi dan komputasi awan dalam konteks pembangunan dan pengelolaan layanan TIK yang fleksibel, skalabel, dan terotomasi. (C6)'},
+                    { code: 'CPL06', desc: 'Mengintegrasikan teknologi jaringan wireless & mobile, sistem tertanam, dan komputasi terdistribusi dalam perancangan dan pengelolaan solusi komunikasi data nirkabel yang andal dan adaptif untuk lingkungan industri dan IoT.'},
+                    { code: 'CPL07', desc: 'Mengembangkan solusi berbasis IoT dan sistem tertanam dalam integrasi perangkat keras, perangkat lunak, dan komunikasi data.'},
+                    { code: 'CPL08', desc: 'Merancang solusi berbasis prinsip keamanan siber dan pembelajaran mesin untuk memitigasi risiko serta memperkuat ketahanan infrastruktur informasi'},
+                    { code: 'CPL09', desc: 'Mengelola infrastruktur virtualisasi dan komputasi awan beserta pipeline DevOps dalam otomatisasi penyediaan layanan TIK yang skalabel, andal, dan berkelanjutan'},
+                    { code: 'CPL10', desc: 'Mengkomunikasikan ide dan solusi teknis dalam kegiatan penelitian atau kerja sama tim multidisiplin secara ilmiah dan profesional.'}
+                ];
+                cpls.forEach(cpl => { %>
+                    <div class="flex items-start">
+                        <input type="checkbox" name="cpl[]" value="<%= cpl.code %>" data-description="<%= cpl.desc %>" class="mt-1">
+                        <label class="ml-3">
+                            <span class="font-semibold"><%= cpl.code %></span>
+                            <span class="text-gray-600"><%= cpl.desc %></span>
+                        </label>
+                    </div>
+                    <textarea name="cpl_description[<%= cpl.code %>]" class="input mt-1" placeholder="Deskripsi spesifik untuk <%= cpl.code %> dalam mata kuliah ini..."></textarea>
+                <% }); %>
             </div>
             <div class="flex justify-between mt-4">
                 <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>

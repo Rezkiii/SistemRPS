@@ -2,29 +2,57 @@
 
 <div class="container-custom flex justify-center items-start min-h-screen bg-gray-50 py-8">
     <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
-        <h2 class="text-2xl font-bold mb-6 text-blue-700 border-b pb-2">Detail RPS</h2>
+        <h2 class="text-2xl font-bold mb-6 text-blue-700 border-b pb-2">Detail RPS: <%= rps.nama_mk %></h2>
         <% if (rps) { %>
-            <table class="table-auto w-full mb-6 border rounded overflow-hidden">
-                <tbody class="divide-y divide-gray-200">
-                    <tr><td class="py-2 font-semibold w-1/3 text-gray-700">Nama Mata Kuliah</td><td class="py-2"><%= rps.nama_mk %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Kode Mata Kuliah</td><td class="py-2"><%= rps.kode_mk %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Rumpun MK</td><td class="py-2"><%= rps.rumpun_mk %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Semester</td><td class="py-2"><%= rps.semester %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Tahun Akademik</td><td class="py-2"><%= rps.tahun_akademik %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Mata Kuliah Syarat</td><td class="py-2"><%= rps.mk_syarat %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">SKS Teori</td><td class="py-2"><%= rps.sks_teori %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">SKS Praktikum</td><td class="py-2"><%= rps.sks_praktikum %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Tanggal Penyusunan</td><td class="py-2"><%= new Date(rps.tanggal_penyusunan).toLocaleDateString() %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Dosen Pengampu</td><td class="py-2"><%= (rps['dosen_pengampu[]'] || rps.dosen_pengampu || []).join(', ') %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Deskripsi Singkat</td><td class="py-2"><%= rps.deskripsi_singkat_mk %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Pustaka Utama</td><td class="py-2"><%= (rps['pustaka_utama[]'] || rps.pustaka_utama || []).join(', ') %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Pustaka Pendukung</td><td class="py-2"><%= (rps['pustaka_pendukung[]'] || rps.pustaka_pendukung || []).join(', ') %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Penjamin Mutu</td><td class="py-2"><%= rps.penjamin_mutu %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Dosen Pengembang RPS</td><td class="py-2"><%= rps.dosen_pengembang_rps %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">Koordinator Program Studi</td><td class="py-2"><%= rps.koordinator_program_studi %></td></tr>
-                    <tr><td class="py-2 font-semibold text-gray-700">CPL</td><td class="py-2"><%= (rps['cpl[]'] || rps.cpl || []).join(', ') %></td></tr>
-                </tbody>
-            </table>
+            <!-- Identitas Mata Kuliah -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">Identitas Mata Kuliah</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div><span class="font-semibold text-gray-700">Kode Mata Kuliah:</span> <%= rps.kode_mk %></div>
+                    <div><span class="font-semibold text-gray-700">Rumpun MK:</span> <%= rps.rumpun_mk %></div>
+                    <div><span class="font-semibold text-gray-700">Semester:</span> <%= rps.semester %></div>
+                    <div><span class="font-semibold text-gray-700">Tahun Akademik:</span> <%= rps.tahun_akademik %></div>
+                    <div><span class="font-semibold text-gray-700">Bobot SKS:</span> <%= rps.sks_teori %> Teori, <%= rps.sks_praktikum %> Praktikum</div>
+                    <div><span class="font-semibold text-gray-700">Mata Kuliah Syarat:</span> <%= rps.mk_syarat || '-' %></div>
+                    <div><span class="font-semibold text-gray-700">Tanggal Penyusunan:</span> <%= new Date(rps.tanggal_penyusunan).toLocaleDateString() %></div>
+                    <div class="md:col-span-2"><span class="font-semibold text-gray-700">Dosen Pengampu:</span> <%= (rps['dosen_pengampu[]'] || rps.dosen_pengampu || []).join(', ') %></div>
+                    <div class="md:col-span-2"><span class="font-semibold text-gray-700">Deskripsi Singkat:</span><br><%= rps.deskripsi_singkat_mk %></div>
+                </div>
+            </div>
+
+            <!-- Pustaka -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">Pustaka</h3>
+                <div><span class="font-semibold text-gray-700">Pustaka Utama:</span><br><%= (rps['pustaka_utama[]'] || rps.pustaka_utama || []).join('<br>') %></div>
+                <div class="mt-4"><span class="font-semibold text-gray-700">Pustaka Pendukung:</span><br><%= (rps['pustaka_pendukung[]'] || rps.pustaka_pendukung || []).join('<br>') %></div>
+            </div>
+
+            <!-- Otorisasi -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">Otorisasi</h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div><span class="font-semibold text-gray-700">Dosen Pengembang RPS:</span> <%= rps.dosen_pengembang_rps %></div>
+                    <div><span class="font-semibold text-gray-700">Koordinator Program Studi:</span> <%= rps.koordinator_program_studi %></div>
+                    <div><span class="font-semibold text-gray-700">Penjamin Mutu:</span> <%= rps.penjamin_mutu %></div>
+                </div>
+            </div>
+
+            <!-- Capaian Pembelajaran Lulusan -->
+            <div class="mb-6">
+                 <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">Capaian Pembelajaran Lulusan (CPL)</h3>
+                <ul class="list-disc list-inside">
+                <% (rps['cpl[]'] || rps.cpl || []).forEach(cpl => { %>
+                    <li>
+                        <strong><%= cpl %>:</strong>
+                        <% if (rps.cpl_descriptions && rps.cpl_descriptions[cpl]) { %>
+                            <%= rps.cpl_descriptions[cpl] %>
+                        <% } else { %>
+                            <span class="text-gray-500">No specific description provided.</span>
+                        <% } %>
+                    </li>
+                <% }); %>
+                </ul>
+            </div>
 
             <!-- CPMK -->
             <h3 class="text-lg font-bold mt-8 mb-3 text-blue-700">CPMK</h3>

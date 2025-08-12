@@ -64,16 +64,16 @@
                                 <div class="flex items-center mb-2">
                                     <input class="input" name="dosen_pengampu[]" type="text" value="<%= dosen %>" required>
                                     <% if (index === 0) { %>
-                                        <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addDosenPengampu()">+</button>
+                                        <button type="button" class="ml-2 btn-primary" onclick="addDosenPengampu()">+</button>
                                     <% } else { %>
-                                        <button type="button" class="ml-2 btn-danger" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="this.parentElement.remove()">-</button>
+                                        <button type="button" class="ml-2 btn-danger" onclick="this.parentElement.remove()">-</button>
                                     <% } %>
                                 </div>
                             <% }); %>
                         <% } else { %>
                              <div class="flex items-center mb-2">
                                 <input class="input" name="dosen_pengampu[]" type="text" required>
-                                <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addDosenPengampu()">+</button>
+                                <button type="button" class="ml-2 btn-primary" onclick="addDosenPengampu()">+</button>
                             </div>
                         <% } %>
                     </div>
@@ -90,16 +90,16 @@
                                   <div class="flex items-center mb-2">
                                     <input class="input" name="pustaka_utama[]" type="text" value="<%= pustaka %>" required>
                                      <% if (index === 0) { %>
-                                        <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addPustakaUtama()">+</button>
+                                        <button type="button" class="ml-2 btn-primary" onclick="addPustakaUtama()">+</button>
                                     <% } else { %>
-                                        <button type="button" class="ml-2 btn-danger" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="this.parentElement.remove()">-</button>
+                                        <button type="button" class="ml-2 btn-danger" onclick="this.parentElement.remove()">-</button>
                                     <% } %>
                                   </div>
                                 <% }); %>
                            <% } else { %>
                                 <div class="flex items-center mb-2">
                                     <input class="input" name="pustaka_utama[]" type="text" required>
-                                    <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addPustakaUtama()">+</button>
+                                    <button type="button" class="ml-2 btn-primary" onclick="addPustakaUtama()">+</button>
                                 </div>
                            <% } %>
                         </div>
@@ -112,16 +112,16 @@
                                   <div class="flex items-center mb-2">
                                     <input class="input" name="pustaka_pendukung[]" type="text" value="<%= pustaka %>" required>
                                      <% if (index === 0) { %>
-                                        <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addPustakaPendukung()">+</button>
+                                        <button type="button" class="ml-2 btn-primary" onclick="addPustakaPendukung()">+</button>
                                     <% } else { %>
-                                        <button type="button" class="ml-2 btn-danger" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="this.parentElement.remove()">-</button>
+                                        <button type="button" class="ml-2 btn-danger" onclick="this.parentElement.remove()">-</button>
                                     <% } %>
                                   </div>
                                 <% }); %>
                            <% } else { %>
                                 <div class="flex items-center mb-2">
                                     <input class="input" name="pustaka_pendukung[]" type="text" required>
-                                    <button type="button" class="ml-2 btn-primary" style="padding:0.5rem 1rem;min-width:2.5rem;" onclick="addPustakaPendukung()">+</button>
+                                    <button type="button" class="ml-2 btn-primary" onclick="addPustakaPendukung()">+</button>
                                 </div>
                            <% } %>
                         </div>
@@ -168,10 +168,14 @@
                     ];
                     %>
                     <% cpls.forEach(cpl => { %>
-                        <div>
-                            <input type="checkbox" name="cpl[]" value="<%= cpl.code %>" data-description="<%= cpl.desc %>" <%= (rps.cpl && rps.cpl.includes(cpl.code)) ? 'checked' : '' %>>
-                            <%= cpl.code %> <%= cpl.desc %>
+                        <div class="flex items-start">
+                            <input type="checkbox" name="cpl[]" value="<%= cpl.code %>" data-description="<%= cpl.desc %>" class="mt-1" <%= (rps.cpl && rps.cpl.includes(cpl.code)) ? 'checked' : '' %>>
+                            <label class="ml-3">
+                                <span class="font-semibold"><%= cpl.code %></span>
+                                <span class="text-gray-600"><%= cpl.desc %></span>
+                            </label>
                         </div>
+                        <textarea name="cpl_description[<%= cpl.code %>]" class="input mt-1" placeholder="Deskripsi spesifik untuk <%= cpl.code %> dalam mata kuliah ini..."><%= (rps.cpl_descriptions && rps.cpl_descriptions[cpl.code]) ? rps.cpl_descriptions[cpl.code] : '' %></textarea>
                     <% }); %>
                 </div>
             </fieldset>

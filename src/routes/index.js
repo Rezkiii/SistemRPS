@@ -127,11 +127,9 @@ router.post('/save-rps', isAuthenticated, (req, res) => {
     }
   });
   // Simpan cpl_deskripsi jika ada
-  if (rpsData['cpl_deskripsi[]']) {
-    if (!Array.isArray(rpsData['cpl_deskripsi[]'])) {
-      rpsData['cpl_deskripsi[]'] = [rpsData['cpl_deskripsi[]']];
-    }
-    rpsData.cpl_deskripsi = rpsData['cpl_deskripsi[]'];
+  if (rpsData.cpl_description) {
+    rpsData.cpl_descriptions = rpsData.cpl_description;
+    delete rpsData.cpl_description; // Hapus field lama jika tidak diperlukan
   }
   const rawData = fs.readFileSync(rpsPath);
   const rps = JSON.parse(rawData);
@@ -239,11 +237,10 @@ router.post('/edit-rps/:id', isAuthenticated, (req, res) => {
   });
 
   // Simpan cpl_deskripsi jika ada
-  if (updatedRpsData['cpl_deskripsi[]']) {
-    if (!Array.isArray(updatedRpsData['cpl_deskripsi[]'])) {
-      updatedRpsData['cpl_deskripsi[]'] = [updatedRpsData['cpl_deskripsi[]']];
-    }
-    newRpsData.cpl_deskripsi = updatedRpsData['cpl_deskripsi[]'];
+  if (updatedRpsData.cpl_description) {
+    newRpsData.cpl_descriptions = updatedRpsData.cpl_description;
+    delete newRpsData.cpl_description;
+    delete updatedRpsData.cpl_description;
   }
 
   // Hapus data cpmk dan sub_cpmk lama untuk diganti dengan yang baru
